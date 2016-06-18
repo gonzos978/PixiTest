@@ -34,15 +34,15 @@
     let winTF;
     let lostTF;
     let bigWinTF = new PIXI.Text("",{font:"bold 24px Arial",fill:"#ffffff", stroke:"#000000",strokeThickness : 5, wordWrap : true,wordWrapWidth : 261});
-    bigWinTF.x=22;
-    bigWinTF.y=172;
+    bigWinTF.x = 22;
+    bigWinTF.y = 172;
     let startBtt;
     let tm = 0;
     let winSound;
     let loseSound;
     let clickSound;
     let firework;
-    let fireworkCounter=0;
+    let fireworkCounter = 0;
 
     PIXI.loader.add("images/imgAtlas.json").load(loadSounds);
 
@@ -94,17 +94,12 @@
         firework.onComplete = function(){playFirework();};
         firework.loop = false;
 
-
-
-
        startScreen();
-
 
     }
 
     // start screen properties
     let startScreenContainer = new PIXI.Sprite();
-
 
     function startScreen()
     {
@@ -401,7 +396,7 @@
             case "startBtt":
                 stage.removeChild(startScreenContainer);
                 gameScreen();
-                break;
+            break;
         }
     }
 
