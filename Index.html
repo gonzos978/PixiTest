@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenLite.min.js"></script>
+    <script src="sound.js"></script>
+</head>
+<body>
+<script src="pixi.min.js"></script>
+<script>
+
+
+    console.log(PIXI);
+    let renderer = PIXI.autoDetectRenderer(310,450,{backgroundColor:0xff0000});
+    document.body.appendChild(renderer.view);
+    console.log(renderer.view);
+
+    let stage = new PIXI.Container();
+    let resources;
+    let gameState = "START";//PLAY,WIN,LOSE
+    let isClickable = false;
+    let instructionText="As the game starts choose one letter of the alphabet. " +
+            "Your goal is to guess the word.With each incorrect letter an element of the gallows appears. When the gallows are complete - you lose." +
+            "If you guess the letter, that latter will be opened.";
+
+    let winMessage = "Congratulations you guessed the word";
+    let words = ["one", "two", "three", "twenty", "madman"];
+    let wordToGuess=[];
+    let guessCount = 0;
+    let loseCounter = 0;
+    let win = 0;
+    let lose = 0;
+    let winTF;
+    let lostTF;
+    let bigWinTF = new PIXI.Text("",{font:"bold 24px Arial",fill:"#ffffff", stroke:"#000000",strokeThickness : 5, wordWrap : true,wordWrapWidth : 261});
+    bigWinTF.x=22;
+    bigWinTF.y=172;
+    let startBtt;
+    let tm = 0;
+    let winSound;
+    let loseSound;
+    let clickSound;
+    let firework;
+    let fireworkCounter=0;
+
+    PIXI.loader.add("images/imgAtlas.json").load(loadSounds);
+
+    function loadSounds()
+    {
+        sounds.load([
+            "sounds/click.mp3",
+            "sounds/lose.mp3",
+            "sounds/win.mp3"
+        ]);
+        sounds.whenLoaded = setup;
+    }
+    function setup()
+    {
+        console.log("setup finished");
+
+        winSound = sounds["sounds/win.mp3"];
+        loseSound = sounds["sounds/lose.mp3"];
+        clickSound = sounds["sounds/click.mp3"];
+
+        resources = PIXI.loader.resources["images/imgAtlas.json"].textures;
+        let bcg = new PIXI.Sprite(resources["bg.jpg"]);
+        stage.addChild(bcg);
+
+        let gameTitle = new PIXI.Text("Hangman game",{
+            font : 'bold 25px Arial',
+            fill:"#ffffff"
+        });
+        stage.addChild(gameTitle);
+
+        //create firework
+        let fireworkTextures = [];
+        let i;
+        var zCounter;
+        for (i = 0; i < 35; i++)
+        {
+            if(i<9)
+            {
+                zCounter="0000";
+            }else if(i<100)
+            {
+                zCounter="000";
+            }
+            var texture = PIXI.Texture.fromFrame('firework_explosion_' +zCounter+ (i+1) + '.png');
+            fireworkTextures.push(texture);
+        }
+        firework = new PIXI.extras.MovieClip( fireworkTextures);
+        firework.animationSpeed = 1;
+        firework.onComplete = function(){playFirework();};
+        firework.loop = false;
+
+
+
+
+       startScreen();
+
+
+    }
+
+    // start screen properties
+    let startScreenContainer = new PIXI.Sprite();
+
+
+    function startScreen()
+    {
+        gameScreenContainer.alpha = 1;
+        gameScreenContainer.visible = false;
+
+        if(!startScreenContainer.parent) {
+            stage.addChild(startScreenContainer);
+
+            let frameBox = new PIXI.Sprite(resources["textCloud.png"]);
+            frameBox.x = 15;
+            frameBox.y = 91;
+            startScreenContainer.addChild(frameBox);
+
+            var style = {
+                font: 'regular 30px Arial',
+                wordWrap: true,
+                wordWrapWidth: 250
+            };
+
+            let tf = new PIXI.Text(instructionText, style);
+            tf.x = 28;
+            tf.y = 104;
+            startScreenContainer.addChild(tf);
+
+            startBtt = new PIXI.Sprite(resources["playBtt.png"]);
+            startBtt.name = "startBtt";
+            startBtt.buttonMode = true;
+            startBtt.interactive = true;
+            startBtt.on('mousedown', onDown);
+            startBtt.on('touchstart', onDown);
+            startBtt.x = 101;
+            startBtt.y = 317;
+            tf = new PIXI.Text("PLAY", {font: 'bold 35px Myriad Pro'});
+            tf.x = 49;
+            tf.y = 8;
+            startBtt.addChild(tf);
+            startScreenContainer.addChild(startBtt);
+        }else{
+            startScreenContainer.visible = true;
+
+        }
+
+        TweenLite.from(startScreenContainer,1,{alpha:0,onComplete:enableButton});
+    }
+
+    let cellHolder = new PIXI.Sprite();
+    let cellMap = [];
+
+    let vKeyboardContainer = new PIXI.Sprite();
+    let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    let gallowsMap = [];
+    let gallowsContainer = new PIXI.Sprite();
+
+    let gameScreenContainer = new PIXI.Sprite();
+
+
+    function gameScreen()
+    {
+
+        if(!gameScreenContainer.parent)
+        {
+            gameScreenContainer.visible = true;
+            stage.addChild(gameScreenContainer);
+            gameScreenContainer.addChild(gallowsContainer);
+            //create gallows
+            let i = 0;
+
+            let gallowsParts = [{name: "V1.png", x: "39", y: "289"},
+                {name: "V2.png", x: "48", y: "320"},
+                {name: "V3.png", x: "76", y: "123"},
+                {name: "V4.png", x: "93", y: "120"},
+                {name: "V5.png", x: "80", y: "108"},
+                {name: "V6.png", x: "155", y: "115"},
+                {name: "man.png", x: "146", y: "115"}];
+
+            let gPart;
+            while (i < gallowsParts.length) {
+                gPart = new PIXI.Sprite(resources[gallowsParts[i].name]);
+                gPart.x = gallowsParts[i].x;
+                gPart.y = gallowsParts[i].y;
+                gallowsMap[i] = gPart;
+                gPart.visible = false;
+                gallowsContainer.addChild(gPart);
+
+                i++;
+            }
+
+            //create letter cells
+            gameScreenContainer.addChild(cellHolder);
+            i = 0;
+            let cell;
+            let posX = 10;
+            while (i < 10) {
+                cell = new PIXI.Sprite(resources["cell.png"]);
+                let celTf = new PIXI.Text("", {font: "bold 18px Arial", fill: "#ffffff"});
+                celTf.x = 6;
+                celTf.y = 5;
+                cell.addChild(celTf);
+                cell.x = posX;
+                cell.y = 46;
+                posX += cell.width + 3;
+                cellMap[i] = cell;
+                cell.visible = false;
+                cellHolder.addChild(cell);
+                i++;
+            }
+
+            //create virtual keyboard
+            i = 0;
+            posX = 0;
+            let posY = 0;
+            let keyBtt;
+            let rowCount = 1;
+            gameScreenContainer.addChild(vKeyboardContainer);
+            while (i < letters.length)
+            {
+                keyBtt = new PIXI.Sprite(resources["keyButton.png"]);
+                keyBtt.buttonMode = true;
+                keyBtt.interactive = true;
+                keyBtt.on('mousedown', onKeyDown);
+                keyBtt.on('touchstart', onKeyDown);
+                let letterKey = new PIXI.Text(letters[i], {font: "bold 20px Myriad Pro"});
+                if(i!=22) {
+                    letterKey.x = 6;
+                }else {
+                    letterKey.x = 5;
+                }
+                letterKey.y = 2;
+                keyBtt.addChild(letterKey);
+                keyBtt.x = posX;
+                keyBtt.y = posY;
+                posX += keyBtt.width + 2;
+                if (rowCount >= 8) {
+                    rowCount = 0;
+                    posX = 0;
+                    posY += keyBtt.height + 2;
+                }
+                vKeyboardContainer.addChild(keyBtt);
+                rowCount++;
+                i++;
+            }
+            vKeyboardContainer.x = 96;
+            vKeyboardContainer.y = 311;
+
+            let hangman = new PIXI.Sprite(resources["hangman.png"]);
+            hangman.x = 4;
+            hangman.y = 261;
+            gameScreenContainer.addChild(hangman);
+
+            let wLabel = new PIXI.Text("Win:", {font: 'bold 15px Arial', fill: "#ffffff"});
+            wLabel.x = 112;
+            wLabel.y = 431;
+            gameScreenContainer.addChild(wLabel);
+
+            winTF = new PIXI.Text(win, {font: 'bold 15px Arial', fill: "#ffffff"});
+            winTF.x = wLabel.x + wLabel.width;
+            winTF.y = 431;
+            gameScreenContainer.addChild(winTF);
+
+            let lLabel = new PIXI.Text("Lost:", {font: 'bold 15px Arial', fill: "#ffffff"});
+            lLabel.x = 162;
+            lLabel.y = 431;
+            gameScreenContainer.addChild(lLabel);
+
+            lostTF = new PIXI.Text(lose, {font: 'bold 15px Arial', fill: "#ffffff"});
+            lostTF.x = lLabel.x + lLabel.width;
+            lostTF.y = 431;
+            gameScreenContainer.addChild(lostTF);
+        }else{
+
+            gameScreenContainer.visible = true;
+            if(bigWinTF.parent)
+            {
+                gameScreenContainer.removeChild(bigWinTF);
+            }
+        }
+        startGame();
+        TweenLite.from(gameScreenContainer,1,{alpha:0});
+
+    }
+
+    function startGame()
+    {
+        loseCounter = 0;
+        guessCount = 0;
+        winTF.text = win;
+        lostTF.text = lose;
+        resetCells();
+        resetGallows();
+        wordToGuess = words[getRandomNumber(0,words.length)].split("");
+        console.log(wordToGuess);
+        let i = 0;
+        while(i<wordToGuess.length)
+        {
+            cellMap[i].visible = true;
+            i++;
+        }
+    }
+
+    function endGame()
+    {
+        switch(gameState)
+        {
+            case "WIN":
+                stage.addChild(firework);
+                playFirework();
+                tm = setTimeout(changeScreens,6000);
+                break;
+            case "LOSE":
+
+                tm = setTimeout(changeScreens,3000);
+                break;
+        }
+    }
+
+    function resetCells()
+    {
+        let i=0;
+        while(i<cellMap.length)
+        {
+            cellMap[i].getChildAt(0).text = "";
+            cellMap[i].visible = false;
+            i++;
+        }
+    }
+
+    function resetGallows()
+    {
+        let i=0;
+        while(i<gallowsMap.length)
+        {
+
+            gallowsMap[i].visible = false;
+            i++;
+        }
+    }
+
+    function checkIfLetterExist(_value)
+    {
+        console.log("L: "+_value);
+        if(wordToGuess.indexOf(_value.toLowerCase())!=-1)
+        {
+            //guess
+            do {
+                var index = wordToGuess.indexOf(_value.toLowerCase());
+                cellMap[index].getChildAt(0).text = _value;
+                wordToGuess[index] = "-";
+                guessCount++;
+
+            } while (wordToGuess.indexOf(_value.toLowerCase()) != -1)
+        }else{
+
+            //miss
+            gallowsMap[loseCounter].visible = true;
+            loseCounter++;
+           console.log("Lose..."+loseCounter)
+        }
+
+        if(loseCounter == 7)
+        {
+            gameState = "LOSE";
+            lose++;
+            lostTF.text = lose;
+            loseSound.play();
+            endGame();
+
+            return;
+        }else if(guessCount==wordToGuess.length)
+        {
+            bigWinTF.text = winMessage;
+            gameScreenContainer.addChild(bigWinTF);
+            gameState = "WIN";
+            win++;
+            winTF.text = win;
+            winSound.play();
+            TweenLite.from(bigWinTF,1,{alpha:1,onComplete:endGame});
+
+            return;
+        }
+
+        isClickable = true;
+    }
+
+    //BUTTON FUNCTIONS
+    function onDown(eventData)
+    {
+        if(!isClickable)
+            return;
+
+        clickSound.play();
+        switch(eventData.target.name)
+        {
+            case "startBtt":
+                stage.removeChild(startScreenContainer);
+                gameScreen();
+                break;
+        }
+    }
+
+    function onKeyDown(eventData)
+    {
+        if(!isClickable)
+            return;
+
+        isClickable = false;
+        clickSound.play();
+        checkIfLetterExist(eventData.target.getChildAt(0).text);
+    }
+
+    function enableButton()
+    {
+        isClickable = true;
+    }
+
+    function changeScreens()
+    {
+
+        TweenLite.to(gameScreenContainer,1,{alpha:0,onComplete:startScreen});
+    }
+
+    function playFirework()
+    {
+        console.log("foo");
+        if(fireworkCounter<5)
+        {
+            firework.gotoAndStop(1);
+            firework.x = getRandomNumber(20,150);
+            firework.y = getRandomNumber(20,150);
+            firework.play();
+            fireworkCounter++;
+        }else{
+
+            firework.stop();
+            stage.removeChild(firework);
+            fireworkCounter = 0;
+        }
+    }
+
+    renderGame();
+
+    function renderGame() {
+
+        requestAnimationFrame(renderGame);
+
+        // render the root container
+        renderer.render(stage);
+    }
+
+    function getRandomNumber(min,max)
+    {
+        return Math.floor(Math.random()*(max-min)+min);
+    }
+
+
+</script>
+
+</body>
+</html>

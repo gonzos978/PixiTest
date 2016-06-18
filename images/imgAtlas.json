@@ -1,0 +1,412 @@
+{"frames": {
+
+"V1.png":
+{
+	"frame": {"x":1135,"y":2,"w":251,"h":129},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":251,"h":129},
+	"sourceSize": {"w":251,"h":129}
+},
+"V2.png":
+{
+	"frame": {"x":1022,"y":2,"w":111,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":111,"h":99},
+	"sourceSize": {"w":111,"h":99}
+},
+"V3.png":
+{
+	"frame": {"x":312,"y":2,"w":37,"h":178},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":178},
+	"sourceSize": {"w":37,"h":178}
+},
+"V4.png":
+{
+	"frame": {"x":267,"y":2,"w":43,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":43,"h":34},
+	"sourceSize": {"w":43,"h":34}
+},
+"V5.png":
+{
+	"frame": {"x":5,"y":2,"w":120,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":23},
+	"sourceSize": {"w":120,"h":23}
+},
+"V6.png":
+{
+	"frame": {"x":189,"y":2,"w":25,"h":76},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":76},
+	"sourceSize": {"w":25,"h":76}
+},
+"bg.jpg":
+{
+	"frame": {"x":260,"y":1028,"w":310,"h":450},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":310,"h":450},
+	"sourceSize": {"w":310,"h":450}
+},
+"cell.png":
+{
+	"frame": {"x":127,"y":2,"w":24,"h":33},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":33},
+	"sourceSize": {"w":24,"h":33}
+},
+"firework_explosion_00001.png":
+{
+	"frame": {"x":1485,"y":140,"w":224,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":16,"w":224,"h":204},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00002.png":
+{
+	"frame": {"x":2,"y":199,"w":238,"h":228},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":14,"w":238,"h":228},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00003.png":
+{
+	"frame": {"x":718,"y":270,"w":252,"h":240},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":252,"h":240},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00004.png":
+{
+	"frame": {"x":2,"y":965,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00005.png":
+{
+	"frame": {"x":1550,"y":882,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00006.png":
+{
+	"frame": {"x":1292,"y":882,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00007.png":
+{
+	"frame": {"x":1034,"y":844,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00008.png":
+{
+	"frame": {"x":776,"y":823,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00009.png":
+{
+	"frame": {"x":518,"y":770,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00010.png":
+{
+	"frame": {"x":260,"y":731,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00011.png":
+{
+	"frame": {"x":2,"y":707,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00012.png":
+{
+	"frame": {"x":1550,"y":624,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00013.png":
+{
+	"frame": {"x":1292,"y":624,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00014.png":
+{
+	"frame": {"x":1034,"y":586,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00015.png":
+{
+	"frame": {"x":776,"y":565,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00016.png":
+{
+	"frame": {"x":518,"y":512,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00017.png":
+{
+	"frame": {"x":260,"y":473,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00018.png":
+{
+	"frame": {"x":2,"y":449,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00019.png":
+{
+	"frame": {"x":1742,"y":366,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00020.png":
+{
+	"frame": {"x":1484,"y":366,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00021.png":
+{
+	"frame": {"x":1226,"y":328,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00022.png":
+{
+	"frame": {"x":972,"y":321,"w":252,"h":242},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":8,"w":252,"h":242},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00023.png":
+{
+	"frame": {"x":478,"y":235,"w":238,"h":236},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":13,"w":238,"h":236},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00024.png":
+{
+	"frame": {"x":242,"y":215,"w":232,"h":234},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":13,"w":232,"h":234},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00025.png":
+{
+	"frame": {"x":1711,"y":148,"w":216,"h":224},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":26,"w":216,"h":224},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00026.png":
+{
+	"frame": {"x":1291,"y":136,"w":192,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":49,"w":192,"h":190},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00027.png":
+{
+	"frame": {"x":2,"y":28,"w":154,"h":158},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":66,"w":154,"h":158},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00028.png":
+{
+	"frame": {"x":162,"y":41,"w":156,"h":164},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":65,"w":156,"h":164},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00029.png":
+{
+	"frame": {"x":328,"y":41,"w":162,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":62,"w":162,"h":172},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00030.png":
+{
+	"frame": {"x":658,"y":63,"w":170,"h":178},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":61,"w":170,"h":178},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00031.png":
+{
+	"frame": {"x":838,"y":84,"w":170,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":59,"w":170,"h":184},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00032.png":
+{
+	"frame": {"x":492,"y":57,"w":164,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":66,"w":164,"h":168},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00033.png":
+{
+	"frame": {"x":1816,"y":2,"w":144,"h":170},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":65,"w":144,"h":170},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00034.png":
+{
+	"frame": {"x":1670,"y":2,"w":136,"h":144},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":83,"w":136,"h":144},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00035.png":
+{
+	"frame": {"x":1524,"y":2,"w":136,"h":144},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":83,"w":136,"h":144},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00036.png":
+{
+	"frame": {"x":1388,"y":2,"w":132,"h":134},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":88,"w":132,"h":134},
+	"sourceSize": {"w":256,"h":256}
+},
+"firework_explosion_00037.png":
+{
+	"frame": {"x":2,"y":2,"w":1,"h":1},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
+	"sourceSize": {"w":256,"h":256}
+},
+"hangman.png":
+{
+	"frame": {"x":840,"y":2,"w":80,"h":180},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":180},
+	"sourceSize": {"w":80,"h":180}
+},
+"keyButton.png":
+{
+	"frame": {"x":162,"y":2,"w":25,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":24},
+	"sourceSize": {"w":25,"h":24}
+},
+"man.png":
+{
+	"frame": {"x":492,"y":2,"w":53,"h":167},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":167},
+	"sourceSize": {"w":53,"h":167}
+},
+"playBtt.png":
+{
+	"frame": {"x":661,"y":2,"w":177,"h":59},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":59},
+	"sourceSize": {"w":177,"h":59}
+},
+"textCloud.png":
+{
+	"frame": {"x":1010,"y":133,"w":279,"h":186},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":279,"h":186},
+	"sourceSize": {"w":279,"h":186}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "imgAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6f946759c5336fe326cb5e315d665cf1$"
+}
+}
